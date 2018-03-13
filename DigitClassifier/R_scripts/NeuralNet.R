@@ -93,6 +93,6 @@ Digit.NN <- function(N.hidden,n.eta,n.epoch){
   Test.err[i,5] <- sign(abs(Test.err[i,1]-Test.err[i,3]))
   }
 
-  #Output - Epoch Error, Test Error
-  return(list(epoch.err=epoch.err,test.err=sum(Test.err[,4]/Ntest))
+  #Output - Epoch Error, Test Error, Binary Error
+  return(list(epoch.err=epoch.err,test.err=sum(Test.err[,4]/Ntest),bin.err=sum(Test.err[,5]/Ntest))
 }
