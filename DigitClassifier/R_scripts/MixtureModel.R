@@ -160,6 +160,6 @@ Digit.MM <- function(mixtures){
   Test.mat <- cbind(Test.mat,abs(sign(Test.mat[,11]-Test.mat[,12])))
   Error.Rate <- sum(Test.mat[,13])/(ntest*10)
   
-  #Output - Model List
+  #Output - Model List, Overall Error Rate
   return(list(Mod.list=Mod.list,Error.Rate=Error.Rate))
 }
