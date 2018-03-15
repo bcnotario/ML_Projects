@@ -10,21 +10,21 @@ softmax <- function(b){exp(b)/sum(exp(b))}
 Digit.NN <- function(N.hidden,n.eta,n.epoch){
 
   #Setup Training Data
-  trainX <- read.csv("/Users/Documents/TrainDigitX.csv",header=F)
-  trainY <- read.csv("/Users/Documents/TrainDigitY.csv",header=F)
+  trainX <- read.csv("/Users/Documents/TrainDigitX.csv",header=F) #Digit Data
+  trainY <- read.csv("/Users/Documents/TrainDigitY.csv",header=F) #Digit Label
   trainE <- matrix(0,dim(trainY),10); for(e in 1:dim(trainY)[1]){trainE[e,trainY[e,1]+1]<-1}
-  trainE <- cbind(trainE[,2:10],trainE[,1])
+  trainE <- cbind(trainE[,2:10],trainE[,1]) #Digit Label Standard Unit Basis Vector
   
   #Total Training & Holdout Data
-  Ntrain <- nrow(trainX)
-  ntrain <- floor(Ntrain*.8)
+  Ntrain <- nrow(trainX) #Total Training Data + Holdout Data
+  ntrain <- floor(Ntrain*.8) #Total Training Data
 
   #Setup Test Data
-  testX <- read.csv("/Users/Documents/TestDigitX.csv",header=F)
-  testY <- read.csv("/Users/Documents/TestDigitY.csv",header=F)
+  testX <- read.csv("/Users/Documents/TestDigitX.csv",header=F) #Digit Data
+  testY <- read.csv("/Users/Documents/TestDigitY.csv",header=F) #Digit Label
   testE <- matrix(0,dim(testY),10); for(e in 1:dim(testY)[1]){testE[e,testY[e,1]+1]<-1}
-  testE <- cbind(testE[,2:10],testE[,1])
-  Ntest <- nrow(testX) 
+  testE <- cbind(testE[,2:10],testE[,1]) #Digit Label Standard Unit Basis Vector
+  Ntest <- nrow(testX) #Total Testing Data
 
   #Input Parameters
   n.l1 <- N.hidden #Hidden layer neurons
