@@ -1,11 +1,9 @@
-#####README
-#####SECTION1 - Training Data Set-Up
-#####SECTION2 - Digit Mixture Model Function
-#####SECTION3 - Digit 0-9; Mixture Models = {5}
-#####SECTION4 - Digit 0-9 Classification Test
+#Mixture Model Digit Classifier
+#Inputs: mixtures (Total Mixtures), number (Digit)
+#Data Files: digits.rdata
 
 #####SECTION1 - Training & Test Data Set-Up
-load("/Users/Chilipino/Documents/UChicago/2017 Q3 Spring/STAT 37500 - Pattern Recognition/Project/digits.rdata")
+load("/Users/Documents/digits.rdata")
 num.class <- dim(training.data)[1]  # Number of classes; 0-9 (true labels)
 num.training <- dim(training.data)[2]  # Number of training data per class; 500 total
 d <- prod(dim(training.data)[3:4])
@@ -120,67 +118,6 @@ mod9.5 <- Digit.MM(5,9)
 mod0.5 <- Digit.MM(5,0)
 Sys.time()
 
-#Digit 0-9; M = 5 Images
-par(mfrow=c(2,3))
-image(t(1 - matrix(mod1.5$Mu[1,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod1.5$Mu[2,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod1.5$Mu[3,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod1.5$Mu[4,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod1.5$Mu[5,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-
-image(t(1 - matrix(mod2.5$Mu[1,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod2.5$Mu[2,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod2.5$Mu[3,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod2.5$Mu[4,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod2.5$Mu[5,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-
-image(t(1 - matrix(mod3.5$Mu[1,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod3.5$Mu[2,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod3.5$Mu[3,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod3.5$Mu[4,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod3.5$Mu[5,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-
-image(t(1 - matrix(mod4.5$Mu[1,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod4.5$Mu[2,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod4.5$Mu[3,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod4.5$Mu[4,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod4.5$Mu[5,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-
-image(t(1 - matrix(mod5.5$Mu[1,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod5.5$Mu[2,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod5.5$Mu[3,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod5.5$Mu[4,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod5.5$Mu[5,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-
-image(t(1 - matrix(mod6.5$Mu[1,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod6.5$Mu[2,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod6.5$Mu[3,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod6.5$Mu[4,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod6.5$Mu[5,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-
-image(t(1 - matrix(mod7.5$Mu[1,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod7.5$Mu[2,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod7.5$Mu[3,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod7.5$Mu[4,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod7.5$Mu[5,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-
-image(t(1 - matrix(mod8.5$Mu[1,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod8.5$Mu[2,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod8.5$Mu[3,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod8.5$Mu[4,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod8.5$Mu[5,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-
-image(t(1 - matrix(mod9.5$Mu[1,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod9.5$Mu[2,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod9.5$Mu[3,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod9.5$Mu[4,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod9.5$Mu[5,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-
-image(t(1 - matrix(mod0.5$Mu[1,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod0.5$Mu[2,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod0.5$Mu[3,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod0.5$Mu[4,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
-image(t(1 - matrix(mod0.5$Mu[5,],20,20))[,20:1], col=gray(seq(0, 1, length.out=256)),axes=FALSE, asp=1)
 
 #####SECTION4 - Digit 3 & 5 Classification
 #Testing Data
