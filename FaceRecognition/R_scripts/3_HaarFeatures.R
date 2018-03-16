@@ -1,6 +1,7 @@
 #Viola-Jones Face Recognition - Haar-Like Feature Table
+#Inputs: images.sum, backs.sum, h1.scale (Haar 1 size), h2.scale (Haar 2 size), h3.scale (Haar 3 size), h4.scale (Haar 4 size)
 
-haartable <- function(h1.scale,h2.scale,h3.scale,h4.scale){
+haarfeat <- function(images.sum,backs.sum,h1.scale,h2.scale,h3.scale,h4.scale){
   
   #Haar 1 Feature Table (Rectangles & Coordinate Grid)
   #Rectangles
@@ -105,7 +106,7 @@ haartable <- function(h1.scale,h2.scale,h3.scale,h4.scale){
     h4.mat[i,16] <- h4xy.rect[i,2] + 2*h4.rec[h4xy.rect[i,3],2]-1
   }
   feattbl4 <- h4.mat[which(h4.mat[,1]!=1&h4.mat[,2]!=1&h4.mat[,15]<65&h4.mat[,16]<65),]
-  
+    
   #Feature Table Full List
   feattbl <- list()
   n.1 <- dim(feattbl1)[1]; n.2 <- dim(feattbl2)[1]+n.1; n.3 <- dim(feattbl3)[1]+n.2; feat.n <- dim(feattbl4)[1]+n.3
@@ -114,6 +115,47 @@ haartable <- function(h1.scale,h2.scale,h3.scale,h4.scale){
   for(i in (n.2+1):(n.3)){feattbl[[i]] <- feattbl3[i-n.2,]}
   for(i in (n.3+1):feat.n){feattbl[[i]] <- feattbl4[i-n.3,]}
   
-  #Output - Feature Table
-  return(feattbl)
+  #Feature Table Haar Assignments
+  haar.mat <- c(rep(1,dim(feattbl1)[1]),rep(2,dim(feattbl2)[1]),rep(3,dim(feattbl3)[1]),rep(4,dim(feattbl4)[1]))
+  
+  #Stored Training Feature Values for Faces & Backgrounds
+  face.mat <- matrix(0,feat.n,2000)
+  back.mat <- matrix(0,feat.n,2000)
+  for(l in 1:n.1){
+    for(k in 1:2000){
+      face.mat[l,k] <- feat.val1(images.sum[[k]],feattbl[[l]][1],feattbl[[l]][2],feattbl[[l]][3],feattbl[[l]][4],
+                                 feattbl[[l]][5],feattbl[[l]][6],feattbl[[l]][7],feattbl[[l]][8])
+      back.mat[l,k] <- feat.val1(backs.sum[[k]],feattbl[[l]][1],feattbl[[l]][2],feattbl[[l]][3],feattbl[[l]][4],
+                                 feattbl[[l]][5],feattbl[[l]][6],feattbl[[l]][7],feattbl[[l]][8])
+    }}
+  for(l in (n.1+1):n.2){
+    for(k in 1:2000){
+      face.mat[l,k] <- feat.val2(images.sum[[k]],feattbl[[l]][1],feattbl[[l]][2],feattbl[[l]][3],feattbl[[l]][4],
+                                 feattbl[[l]][5],feattbl[[l]][6],feattbl[[l]][7],feattbl[[l]][8])
+      back.mat[l,k] <- feat.val2(backs.sum[[k]],feattbl[[l]][1],feattbl[[l]][2],feattbl[[l]][3],feattbl[[l]][4],
+                                 feattbl[[l]][5],feattbl[[l]][6],feattbl[[l]][7],feattbl[[l]][8])
+    }}
+  for(l in (n.2+1):n.3){
+    for(k in 1:2000){
+      face.mat[l,k] <- feat.val3(images.sum[[k]],feattbl[[l]][1],feattbl[[l]][2],feattbl[[l]][3],feattbl[[l]][4],
+                                 feattbl[[l]][5],feattbl[[l]][6],feattbl[[l]][7],feattbl[[l]][8],
+                                 feattbl[[l]][9],feattbl[[l]][10],feattbl[[l]][11],feattbl[[l]][12])
+      back.mat[l,k] <- feat.val3(backs.sum[[k]],feattbl[[l]][1],feattbl[[l]][2],feattbl[[l]][3],feattbl[[l]][4],
+                                 feattbl[[l]][5],feattbl[[l]][6],feattbl[[l]][7],feattbl[[l]][8],
+                                 feattbl[[l]][9],feattbl[[l]][10],feattbl[[l]][11],feattbl[[l]][12])
+    }}
+  for(l in (n.3+1):feat.n){
+    for(k in 1:2000){
+      face.mat[l,k] <- feat.val4(images.sum[[k]],feattbl[[l]][1],feattbl[[l]][2],feattbl[[l]][3],feattbl[[l]][4],
+                                 feattbl[[l]][5],feattbl[[l]][6],feattbl[[l]][7],feattbl[[l]][8],
+                                 feattbl[[l]][9],feattbl[[l]][10],feattbl[[l]][11],feattbl[[l]][12],
+                                 feattbl[[l]][13],feattbl[[l]][14],feattbl[[l]][15],feattbl[[l]][16])
+      back.mat[l,k] <- feat.val4(backs.sum[[k]],feattbl[[l]][1],feattbl[[l]][2],feattbl[[l]][3],feattbl[[l]][4],
+                                 feattbl[[l]][5],feattbl[[l]][6],feattbl[[l]][7],feattbl[[l]][8],
+                                 feattbl[[l]][9],feattbl[[l]][10],feattbl[[l]][11],feattbl[[l]][12],
+                                 feattbl[[l]][13],feattbl[[l]][14],feattbl[[l]][15],feattbl[[l]][16])
+    }}
+  
+  #Output - Feature Table, Training Feature Values Faces & Backgrounds, Haar Assignments
+  return(list(feattbl=feattbl,face.mat=face.mat,back.mat=back.mat,haar.mat=haar.mat))
 }
