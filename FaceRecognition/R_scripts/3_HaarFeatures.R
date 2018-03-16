@@ -1,4 +1,4 @@
-#Viola-Jones Face Recognition - Haar-Like Feature Table & Feature Values
+#Viola-Jones Face Recognition - Haar-Like Feature Table & Training Feature Values
 #Inputs: images.sum, backs.sum, h1.scale (Haar 1 size), h2.scale (Haar 2 size), h3.scale (Haar 3 size), h4.scale (Haar 4 size)
 
 haarfeat <- function(images.sum,backs.sum,h1.scale,h2.scale,h3.scale,h4.scale){
