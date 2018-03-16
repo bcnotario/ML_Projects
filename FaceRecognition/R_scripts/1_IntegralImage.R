@@ -3,6 +3,7 @@
 #Packages: jpeg
 
 iimage <- function(){
+  
   #Training Image Paths
   face.dir <- '~/faces/'
   back.dir <- '~/background/'
