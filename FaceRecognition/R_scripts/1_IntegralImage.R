@@ -2,7 +2,7 @@
 #Data Files: faces, backgrounds (Training Data JPG), portrait.jpg (Test Data)
 #Packages: jpeg
 
-iimage() <- function{
+iimage <- function(){
   #Training Image Paths
   face.dir <- '~/faces/'
   back.dir <- '~/background/'
