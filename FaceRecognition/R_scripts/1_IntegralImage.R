@@ -33,23 +33,6 @@ iimage <- function(){
     backs.sum[[i+1]]  <- bk.temp
   }
   
-  #Test Integral Image
-  test.bw <- readJPEG('~/portrait.jpg',native=FALSE)
-  test.sum <- matrix(0,1280,1600) #1280x1600 image dimensions
-  for(k in 1:1600){
-    test.sum[1,k] <- sum(test.bw[1:1,1:k]) 
-    for(j in 2:1280){
-      test.sum[j,k] <- test.sum[j-1,k] + sum(test.bw[j:j,1:k])
-    }}
-
-  #Test Image Coordinates Table 
-  scale <- 2
-  seq.x <- seq(3,(1600-63),scale)
-  seq.y <- seq(3,(1280-63),scale)
-  xy.port <- expand.grid(seq.x,seq.y)
-  xy.port <- cbind(xy.port,0)
-  colnames(xy.port) <- c("x_port","y_port","+-1")
-  
   #Output - Integral Image Faces, Backgrounds, Test Image; Test Image Coordinates
-  return(list(images.sum=images.sum,backs.sum=backs.sum,test.sum=test.sum,xy.port=xy.port))
+  return(list(images.sum=images.sum,backs.sum=backs.sum))
 }
