@@ -28,7 +28,7 @@ kmeans <- function(data,k){
       calc.mat[i,3]<-clu.mat[which(clu.mat[,2]==min(clu.mat[,2])),][2]
     }
     
-	#Distortion Update
+    #Distortion Update
     iter.mat <- rbind(iter.mat,c(max(iter.mat[,1]+1),sum(calc.mat[,3])))
     
     #Centroid Position Loop
