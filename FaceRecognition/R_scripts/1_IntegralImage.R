@@ -1,5 +1,5 @@
 #Viola-Jones Face Recognition - Integral Image
-#Data Files: faces, backgrounds (Training Data JPG), portrait.jpg (Test Data)
+#Data Files: faces, backgrounds (Training Data JPGs)
 #Packages: jpeg
 
 iimage <- function(){
