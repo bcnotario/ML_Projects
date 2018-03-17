@@ -16,14 +16,14 @@ boost <- function(face.mat,back.mat,feat.n){
     }
     para.list[[l]] <- para.mat
   }
-  
-  #Boosting Classifier List
-  class.list <- list()
 
   #Initialize Error Subset
   err.subset <- c(2001:4000)
   err.n <- length(err.subset)
-    
+  
+  #Boosting Classifier List
+  class.list <- list()
+  
   #Initialize Boosting Loop
   b <- 1; str.err <- .5
   while(str.err>.005){
