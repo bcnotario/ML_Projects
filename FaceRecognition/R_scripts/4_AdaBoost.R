@@ -69,7 +69,7 @@ boost <- function(face.mat,back.mat,feat.n){
       class.best <- matrix(0,15,8); class.best[,1] <- c(1:15)
       class.best[t,2:7] <- c(h.t[1],.5*log((1-h.t[3])/h.t[3]),2*sqrt(h.t[3]*(1-h.t[3])),h.t[2],h.t[4],h.t[3])
       
-      #Converge until feature error improvement <1%
+      #Converge until Feature Error Improvement <1%
       nclass.err <- class.best[t,7] - class.best[t-1,7]
       t <- t+1
     }
@@ -92,7 +92,7 @@ boost <- function(face.mat,back.mat,feat.n){
     #Store Strong Classifier
     class.list[[b]] <- list(class.best=class.best[class.bes[,2]>0,],f.thresh=f.thresh)
        
-    #Converge until strong classifier error <.005
+    #Converge until Strong Classifier Error <.005
     err.subset <- which(f.temp2[,4]==1,arr.ind = TRUE)
     err.n <- length(err.subset)
     str.err <- length(err.subset)/(2000+err.n)
