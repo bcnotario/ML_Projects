@@ -40,7 +40,6 @@ kmeans <- function(data,k){
     #Converges when cluster assignments same as previous iteration
     converge <- sum(abs((calc.prior - calc.mat[,2])))
     calc.prior <- calc.mat[,2]
-    
   }
   
   #Output of Cluster Assignments, Iterations, and Distortion
