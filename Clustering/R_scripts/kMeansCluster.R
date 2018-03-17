@@ -43,6 +43,6 @@ kmeans <- function(data,k){
     
   }
   
-  #Output of cluster assignments, iterations, and distortion
+  #Output of Cluster Assignments, Iterations, and Distortion
   return(list(mat.final=calc.mat,iter.mat=iter.mat[2:length(iter.mat[,1]),])) 
 }
