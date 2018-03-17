@@ -90,7 +90,7 @@ boost <- function(face.mat,back.mat,feat.n){
     f.temp2 <- cbind(f.temp,sign(abs(sign(f.temp[,2]-f.thresh)-f.temp[,1])))
     
     #Store Strong Classifier
-    class.list[[b]] <- list(class.best=class.best[class.best$h_t>0,],f.thresh=f.thresh)
+    class.list[[b]] <- list(class.best=class.best[class.bes[,2]>0,],f.thresh=f.thresh)
        
     #Converge until strong classifier error <.005
     err.subset <- which(f.temp2[,4]==1,arr.ind = TRUE)
