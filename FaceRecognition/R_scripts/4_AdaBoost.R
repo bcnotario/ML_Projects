@@ -48,7 +48,7 @@ boost <- function(face.mat,back.mat,feat.n){
     
     #Initialize Strong Classifier Loop
     t <- 2; nclass.err <- .5
-    while(nclass.err<0.01){
+    while(nclass.err>0.01){
       
       #Update Classifier Weights
       y.val <- c(rep(1,2000),rep(-1,err.n))
