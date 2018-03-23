@@ -1,7 +1,7 @@
 #k-Means++ Clustering
 #Inputs: data (n-by-d Dimensional Data), k (Total Clusters)
 
-kmeans <- function(data,k){
+kmeans.pp <- function(data,k){
   
   #Total Points & Dimension 
   n <- length(data[,1])
