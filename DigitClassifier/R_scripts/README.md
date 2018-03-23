@@ -1,5 +1,5 @@
 # Digit Classifiers
-Various methods to solve the full 10-digit MNIST handwritten digit classification task
+Various classification methods to solve the full 10-digit MNIST handwritten digit classification task
 
 ### Mixture Model Digit Classifier
 Mixture of Bernoullis using the Expectation-Maximization algorithm where the specified total mixtures needs to be 
