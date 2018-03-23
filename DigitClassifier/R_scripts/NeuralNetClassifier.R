@@ -3,11 +3,11 @@ sig <- function(a){(1+exp(-a))^-1}
 softmax <- function(b){exp(b)/sum(exp(b))}
 
 #Neural Network Digit Classifier
-#Inputs: N.hidden (Hidden layer neurons), n.eta (learning rate), n.epochs (Training cycles)
+#Inputs: n.hidden (Hidden layer neurons), n.eta (learning rate), n.epochs (Training cycles)
 #Data Files: TrainDigitX.csv, TrainDigitY.csv, TestDigitX.csv, TestDigitY.csv
 #Functions: sig, softmax
 
-Digit.NN <- function(N.hidden,n.eta,n.epoch){
+Digit.NN <- function(n.hidden,n.eta,n.epoch){
 
   #Setup Training Data
   trainX <- read.csv("/Users/Documents/TrainDigitX.csv",header=F) #Digit Data
@@ -27,7 +27,7 @@ Digit.NN <- function(N.hidden,n.eta,n.epoch){
   Ntest <- nrow(testX) #Total Testing Data
 
   #Input Parameters
-  n.l1 <- N.hidden #Hidden layer neurons
+  n.l1 <- n.hidden #Hidden layer neurons
   eta  <- n.eta #Learning rate
   epoch <- n.epoch #Epochs
   
@@ -39,8 +39,8 @@ Digit.NN <- function(N.hidden,n.eta,n.epoch){
   epoch.err  <- list()
   
   #Random Weights (Initial) for i=1, 1st epoch
-  w.01 <- matrix(rnorm((n.l1)*(n.l0)),n.l1,n.l0) #Weights & Bias (N.hiddenx785)
-  w.12 <- matrix(rnorm((n.l2)*(n.l1)),n.l2,n.l1) #Weights & Bias (10xN.hidden)
+  w.01 <- matrix(rnorm((n.l1)*(n.l0)),n.l1,n.l0) #Weights & Bias (n.hiddenx785)
+  w.12 <- matrix(rnorm((n.l2)*(n.l1)),n.l2,n.l1) #Weights & Bias (10xn.hidden)
   
   #Epoch Loop
   for(k in 1:epoch){
@@ -49,13 +49,13 @@ Digit.NN <- function(N.hidden,n.eta,n.epoch){
     for(i in 1:ntrain){
       #Feedforward
       x.0 <- c(as.numeric(trainX[i,]),1) #Input with bias (785x1)
-      x.1 <- sig(w.01%*%x.0) #Output with bias (N.hiddenx1)
+      x.1 <- sig(w.01%*%x.0) #Output with bias (n.hiddenx1)
       x.2 <- softmax(w.12%*%x.1) #Output; 10x1
       
       #Backpropagation
       #Update Delta
       d.2 <- (x.2-trainE[i,]) #10x1
-      d.1 <- x.1*(1-x.1)*t(w.12)%*%d.2 #N.hiddenx1
+      d.1 <- x.1*(1-x.1)*t(w.12)%*%d.2 #n.hiddenx1
       #Update Weights
       w.12 <- w.12-eta*d.2%*%t(x.1)
       w.01 <- w.01-eta*d.1%*%t(x.0)
