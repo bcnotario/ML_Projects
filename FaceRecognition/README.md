@@ -7,7 +7,7 @@ The algorithm converts each face and background training image to grayscale and 
 VJ1 <- iimage()
 ```
 ### Haar-Like Feature Value Functions
-Four functions to calculate the values of the four Haar-Like features for a given image and specified rectangle vertices
+Four functions to calculate the values of each Haar-Like features for a given image and specified rectangle vertices
 * Haar-Like Feature Value 1 - Two adjacent, congruent vertical rectangles
 * Haar-Like Feature Value 2 - Two adjacent, congruent horizontal rectangles
 * Haar-Like Feature Value 3 - Three adjacent, congruent vertical rectangles
