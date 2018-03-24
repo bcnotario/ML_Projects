@@ -1,8 +1,12 @@
 # Clustering
-Various clustering methods to partition n observations (of d dimensions) into k clusters
+Various clustering methods to partition *n* observations (of *d* dimensions) into *k* clusters
 
 ### k-Gaussians Mixture Clustering
-Mixture of Gaussians using the Expectation-Maximization algorithm; the initial clusters are assigned randomly and the initial parameters (cluster prior probability, Gaussian center, Gaussian covariance matrix) are respectively computed; the cluster assignment probabilities are updated in the Expectation-step and the cluster and Gaussian parameters are updated in the Maximization-step recursively until the cluster assignments no longer change
+Mixture of Gaussians using the Expectation-Maximization algorithm
+* The initial clusters are assigned randomly and the initial parameters (cluster prior probability, Gaussian center, Gaussian covariance matrix) are respectively computed
+* The Expectation-step updates the cluster assignment probabilities
+* The Maximization-step updates the cluster and Gaussian parameters
+* The Expectation and Maximization steps are recursively repeated until the cluster assignments no longer change
 ```
 kgauss(data,k)
 ```
@@ -12,7 +16,11 @@ Standard k-means algorithm with the initial clusters assigned randomly; the cent
 kmeans(data,k)
 ```
 ### k-Means++ Clustering
-The standard k-means algorithm with a specific cluster initialization algorithm; the first centroid is chosen uniformly at random and the remaining centroids are selected based on a probability proportional to their squared Euclidean distance from the nearest centroid until all the centroids are initially determined; it completes when the cluster assignments no longer change with each recursion
+The standard k-means algorithm with a specific cluster initialization algorithm
+* The first centroid is chosen uniformly at random 
+* The squared Euclidean distance between each point and the closest centroid is computed
+* A new centroid is chosen with probability distribution proportional to the squared Euclidean distance
+* The last two steps are recursively repeated until all the initial centroids have been determined
 ```
 kmeans.pp(data,k)
 ```
