@@ -1,9 +1,9 @@
 #Viola-Jones Face Recognition - Classifier Cascade
-#Inputs: class.list (Strong Classifier List), feattbl (Feature Table), haar.mat (Haar Assignments)
+#Inputs: class.list (Strong Classifier List), feattbl (Feature Table), haar.mat (Haar Assignments), scale (scan size)
 #Data Files: portrait.jpg (Test Image)
 #Functions: feat.val1, feat.val2, feat.val3, feat.val4
 
-classcascade <- function(class.list,feattbl,haar.mat){
+classcascade <- function(class.list,feattbl,haar.mat,scale){
   
   #Test Integral Image
   test.bw <- readJPEG('~/portrait.jpg',native=FALSE)
@@ -14,8 +14,7 @@ classcascade <- function(class.list,feattbl,haar.mat){
       test.sum[j,k] <- test.sum[j-1,k] + sum(test.bw[j:j,1:k])
     }}
   
-  #Test Image Coordinates Table 
-  scale <- 2
+  #Test Image Coordinates Table
   seq.x <- seq(3,(1600-63),scale)
   seq.y <- seq(3,(1280-63),scale)
   xy.faces <- expand.grid(seq.x,seq.y); xy.faces <- cbind(xy.faces,0); colnames(xy.faces) <- c("x_port","y_port","+-1")
