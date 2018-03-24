@@ -14,7 +14,7 @@ Four functions to calculate the values of each Haar-Like features for a given im
 * Haar-Like Feature Value 4 - Four adjacent, congruent rectangles that bisect one larger rectangle
 ### Haar-Like Feature Table & Training Feature Values
 The algorithm creates the Feature Table and stores Training Feature Values
-* Feature Table - Contains the coordinates of all possible features within a 64x64 pixel image
+* Feature Table - Contains the rectangle vertice coordinates of all possible features within a 64x64 pixel image
 * Training Feature Values - Contains all feature values for all training faces and all training backgrounds
 ```
 VJ2 <- haarfeat(VJ1$images.sum,VJ1$backs.sum,h1.scale,h2.scale,h3.scale,h4.scale)
