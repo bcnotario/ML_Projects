@@ -25,7 +25,7 @@ AdaBoost learning algorithm to accurately determine several strong face classifi
 VJ3 <- boost(VJ2$face.mat,VJ2$back.mat,VJ2$feat.n)
 ```
 ### Classifier Cascade
-Application of strong face classifiers to detect faces in test image (larger than 64x64 pixels) via successive false positive eliminating filters
+Application of strong face classifiers to detect faces in a test image (larger than 64x64 pixels) via successive false positive eliminating filters
 ```
 VJ4 <- classcascade(VJ3$class.list,VJ2$feattbl,VJ2$haar.mat)
 ```
