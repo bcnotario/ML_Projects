@@ -156,6 +156,6 @@ haarfeat <- function(images.sum,backs.sum,h1.scale,h2.scale,h3.scale,h4.scale){
                                  feattbl[[l]][13],feattbl[[l]][14],feattbl[[l]][15],feattbl[[l]][16]))
     }}
   
-  #Output - Feature Table, Training Feature Values Faces & Backgrounds, Haar Assignments
-  return(list(feattbl=feattbl,face.mat=face.mat,back.mat=back.mat,haar.mat=haar.mat))
+  #Output - Feature Table, Total Features, Training Feature Values Faces & Backgrounds, Haar Assignments
+  return(list(feattbl=feattbl,feat.n=feat.n,face.mat=face.mat,back.mat=back.mat,haar.mat=haar.mat))
 }
