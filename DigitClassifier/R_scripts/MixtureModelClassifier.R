@@ -8,7 +8,7 @@ Digit.MM <- function(mixtures){
   trainX <- read.csv("/Users/Documents/TrainDigitX.csv",header=F) #Digit Data
   trainY <- read.csv("/Users/Documents/TrainDigitY.csv",header=F) #Digit Label
   ntrain <- nrow(trainX) #Total Training Data
-  nclass <- 0:9dim(training.data)[1] #Total Number Classes
+  nclass <- 0:9 #Total Number Classes
   d <- ncol(trainX) #Total Data Dimensions
     
   #Setup Test Data
