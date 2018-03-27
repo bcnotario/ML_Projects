@@ -5,19 +5,16 @@
 Digit.MM <- function(mixtures){
   
   #Setup Training Data
-  load("/Users/Documents/digits.rdata")
-  nclass <- dim(training.data)[1] #Total Number Classes
-  ntrain <- dim(training.data)[2]  #Total Training Data
-  d <- prod(dim(training.data)[3:4]) #Total Data Dimensions
-  dim(training.data) <- c(nclass * ntrain, d) # Reshape training data to vector per i
-  trainX <- training.data #Digit Data
-  trainY <- rep(0:9, ntrain) #Digit Label
+  trainX <- read.csv("/Users/Documents/TrainDigitX.csv",header=F) #Digit Data
+  trainY <- read.csv("/Users/Documents/TrainDigitY.csv",header=F) #Digit Label
+  ntrain <- nrow(trainX) #Total Training Data
+  nclass <- 0:9dim(training.data)[1] #Total Number Classes
+  d <- ncol(trainX) #Total Data Dimensions
     
   #Setup Test Data
-  ntest <- dim(test.data)[2] # Number of test data; 1000 total
-  dim(test.data) <- c(nclass * ntest, d) # Reshape training data to vector per i
-  testX <- test.data
-  testY <- rep(0:9, ntest) # Labels of test data
+  testX <- read.csv("/Users/Documents/TestDigitX.csv",header=F) #Digit Data
+  testY <- read.csv("/Users/Documents/TestDigitY.csv",header=F) #Digit Label
+  ntest <- nrow(testX) #Total Test Data
   
   #Initial Parameters & Model List
   M <- mixtures; N <- ntrain; Mod.list <- list()
