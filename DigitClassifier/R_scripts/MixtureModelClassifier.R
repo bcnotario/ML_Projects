@@ -1,6 +1,6 @@
 #Mixture Model Digit Classifier
 #Inputs: mixtures (Total Mixtures)
-#Data Files: digits.rdata (Training & Test Data)
+#Data Files: TrainDigitX.csv, TrainDigitY.csv, TestDigitX.csv, TestDigitY.csv
 
 Digit.MM <- function(mixtures){
   
