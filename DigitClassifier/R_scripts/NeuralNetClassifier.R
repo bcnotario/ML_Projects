@@ -54,7 +54,7 @@ Digit.NN <- function(n.hidden,n.eta,n.epoch){
       
       #Backpropagation
       #Update Delta
-      d.2 <- (x.2-trainE[i,]) #10x1
+      d.2 <- (x.2-trainE[i,])*x.2*(1-x.2) #10x1
       d.1 <- x.1*(1-x.1)*t(w.12)%*%d.2 #n.hiddenx1
       #Update Weights
       w.12 <- w.12-eta*d.2%*%t(x.1)
